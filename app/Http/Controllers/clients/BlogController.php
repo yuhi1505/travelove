@@ -82,4 +82,12 @@ class BlogController extends Controller
     {
         //
     }
+    public function detail()
+    {
+        return view('clients.blog-detail');
+    }
+    public function list()
+    {
+        return view('clients.blog-list');
+    }
 }

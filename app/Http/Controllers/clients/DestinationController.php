@@ -82,4 +82,12 @@ class DestinationController extends Controller
     {
         //
     }
+    public function detail()
+    {
+        return view('clients.destination-detail');
+    }
+    public function list()
+    {
+        return view('clients.destination-list');
+    }
 }

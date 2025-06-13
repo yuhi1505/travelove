@@ -82,4 +82,17 @@ class PageController extends Controller // Đổi từ PackageController thành 
     {
         //
     }
+    public function grid()
+    {
+        return view('clients.gallery-grid');
+    }
+    public function slider()
+    {
+        return view('clients.gallery-slider');
+    }
+    public function faqs()
+    {
+        return view('clients.faqs');
+    }
+
 }

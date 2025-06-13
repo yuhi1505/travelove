@@ -4,12 +4,7 @@
 {{-- End Header --}}
 
         <!-- Preloader -->
-        <div class="preloader"><div class="custom-loader"></div></div>
-        <!-- Page Banner Start -->
-        <section class="page-banner-area pt-50 pb-35 rel z-1 bgs-cover" style="background-image: url('{{ asset('clients/images/banner/banner.jpg') }}');">
-  
-        </section>
-        <!-- Page Banner End -->
+
         <!-- 404 Error Area start -->
         <section class="error-area pt-70 pb-100 rel z-1">
             <div class="container">

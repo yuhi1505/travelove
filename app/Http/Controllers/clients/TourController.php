@@ -82,8 +82,15 @@ class TourController extends Controller
     {
         //
     }
+
+        public function sidebar()
+    {
+        return view('clients.tour-sidebar');
+    }
     public function detail()
     {
         return view('clients.tour-detail');
     }
+ 
+
 }
