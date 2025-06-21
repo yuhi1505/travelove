@@ -14,7 +14,10 @@ class BookingController extends Controller
      */
     public function index()
     {
-        return view('clients.booking');
+        // Set the title for the Booking page
+        $title = 'Đặt Chỗ';
+        // Return the view for the booking page
+        return view('clients.booking', compact('title'));
     }
 
     /**

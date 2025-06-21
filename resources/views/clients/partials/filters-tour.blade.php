@@ -5,7 +5,7 @@
             <div class="image">
                 <span class="badge bgc-pink">Featured</span>
                 <a href="#" class="heart"><i class="fas fa-heart"></i></a>
-                <img src="{{ asset('admin/assets/images/gallery-tours/' . $tour->images[0] . '') }}" alt="Tour List">
+                <img src="{{ asset('clients/assets/images/gallery-tours/' . $tour->images[0] . '') }}" alt="Tour List">
             </div>
             <div class="content equal-content-fix">
                 <div class="destination-header">
@@ -22,7 +22,7 @@
 
                     </div>
                 </div>
-                <h6><a href="{{ route('tour-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a> </h6>
+                <h6><a href="{{ route('tour-detail', ['id' => $tour->tourid]) }}">{{ $tour->title }}</a> </h6>
                 <ul class="blog-meta">
                     <li><i class="far fa-clock"></i>{{ $tour->time }}</li>
                     <li><i class="far fa-user"></i>{{ $tour->quantity }}</li>
@@ -30,7 +30,7 @@
                 <div class="destination-footer">
                     <span class="price"><span>{{ number_format($tour->priceAdult, 0, ',', '.') }}</span>
                         VND / người</span>
-                    <a href="{{ route('tour-detail', ['id' => $tour->tourId]) }}"
+                    <a href="{{ route('tour-detail', ['id' => $tour->tourid]) }}"
                         class="theme-btn style-two style-three">
                         <i class="fal fa-arrow-right"></i>
                     </a>

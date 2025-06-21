@@ -14,7 +14,9 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        return view('clients.destination');
+        // Set the title for the Destination page
+        $title = 'Điểm Đến';
+        return view('clients.destination', compact('title'));
     }
 
     /**
@@ -81,13 +83,5 @@ class DestinationController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function detail()
-    {
-        return view('clients.destination-detail');
-    }
-    public function list()
-    {
-        return view('clients.destination-list');
     }
 }

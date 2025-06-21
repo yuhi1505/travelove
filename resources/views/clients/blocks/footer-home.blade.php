@@ -137,6 +137,11 @@
 <!-- footer area end -->
 
 </div>
+@if (session('error'))
+    <script>
+        alert("{{ session('error') }}");
+    </script>
+@endif
 <!-- Jquery -->
 <script src="{{ asset('clients/assets/js/jquery-3.6.0.min.js') }}"></script>
 <!-- Bootstrap -->
@@ -163,7 +168,9 @@
 <script src="{{ asset('clients/assets/js/script.js') }}"></script>
 {{-- jquery-toast  --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
+<!-- Custom script by Yuhi-->
+<script src="{{ asset('clients/assets/js/custom-js.js') }}"></script>
+<script src="{{asset('clients/assets/js/jquery.datetimepicker.full.min.js')}}"></script>
 
 </body>
 

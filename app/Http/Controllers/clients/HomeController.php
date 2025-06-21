@@ -4,17 +4,27 @@ namespace App\Http\Controllers\clients;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\clients\Home;
+use App\Models\clients\Tours;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $homeTours;
+    private $tours;
+
+    public function __construct()
+    {
+        
+        $this->homeTours = new Home();
+        $this->tours = new Tours();
+    }
     public function index()
     {
-        return view('clients.home');
+        $title = 'Trang Chủ';
+        $tours = $this->homeTours->getHomeTours(); // Lấy danh sách tours
+        // dd($tours);
+
+        return view('clients.home', compact('title', 'tours')); // Truyền biến $tours sang view
     }
 
     /**

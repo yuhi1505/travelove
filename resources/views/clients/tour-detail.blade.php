@@ -1,34 +1,49 @@
-{{-- Header 
 @include('clients.blocks.header')
-
-@include('clients.blocks.banner', ['title' => 'Chi tiết Tours', 'subtitle' => 'Chi tiết Tour'])
+<section class="page-banner-two rel z-1">
+    <div class="container-fluid">
+        <hr class="mt-0">
+        <div class="container">
+            <div class="banner-inner pt-15 pb-25">
+                <h2 class="page-title mb-10 aos-init aos-animate" data-aos="fade-left" data-aos-duration="1500"
+                    data-aos-offset="50">{{ $tourDetail->destination }}</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center mb-20 aos-init aos-animate" data-aos="fade-right"
+                        data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
+                        <li class="breadcrumb-item active">{{ $title }}</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</section>
 <!-- Tour Gallery start -->
 <div class="tour-gallery">
     <div class="container-fluid">
         <div class="row gap-10 justify-content-center rel">
             <div class="col-lg-4 col-md-6">
                 <div class="gallery-item">
-                    <img src="{{ asset('admin/assets/images/gallery-tours/' ) }}"
+                    <img src="{{ asset('clients/assets/images/gallery-tours/' . $tourDetail->images[0] . '') }}"
                         alt="Destination">
                 </div>
                 <div class="gallery-item">
-                    <img src="{{ asset('admin/assets/images/gallery-tours/' ) }}"
+                    <img src="{{ asset('clients/assets/images/gallery-tours/' . $tourDetail->images[1] . '') }}"
                         alt="Destination">
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="gallery-item gallery-between">
-                    <img src="{{ asset('admin/assets/images/gallery-tours/' ) }}"
+                    <img src="{{ asset('clients/assets/images/gallery-tours/' . $tourDetail->images[2] . '') }}"
                         alt="Destination">
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="gallery-item">
-                    <img src="{{ asset('admin/assets/images/gallery-tours/' ) }}"
+                    <img src="{{ asset('clients/assets/images/gallery-tours/' . $tourDetail->images[3] . '') }}"
                         alt="Destination">
                 </div>
-                <div class="gallery-item">
-                    <img src="{{ asset('admin/assets/images/gallery-tours/' ) }}"
+                                <div class="gallery-item">
+                    <img src="{{ asset('clients/assets/images/gallery-tours/' . $tourDetail->images[4] . '') }}"
                         alt="Destination">
                 </div>
             </div>
@@ -83,7 +98,7 @@
             <div class="col-lg-8">
                 <div class="tour-details-content">
                     <h3>Khám phá Tours</h3>
-                    <p>{!! $tourDetail->description !!} </p>
+                    <p>{{ $tourDetail->description }}</p>
                     <div class="row pb-55">
                         <div class="col-md-6">
                             <div class="tour-include-exclude mt-30">
@@ -124,14 +139,14 @@
                         <div class="accordion-item">
                             <h5 class="accordion-header">
                                 <button class="accordion-button collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo{{ $timeline->timeLineId }}">
+                                    data-bs-target="#collapseTwo{{ $timeline->timelineid }}">
                                     Ngày {{ $day++ }} - {{ $timeline->title }}
                                 </button>
                             </h5>
-                            <div id="collapseTwo{{ $timeline->timeLineId }}" class="accordion-collapse collapse"
+                            <div id="collapseTwo{{ $timeline->timelineid }}" class="accordion-collapse collapse"
                                 data-bs-parent="#faq-accordion-two">
                                 <div class="accordion-body">
-                                    <p>{!! $timeline->description !!}</p>
+                                    <p>{{ $timeline->description }}</p>
                                 </div>
                             </div>
                         </div>
@@ -139,12 +154,12 @@
                 </div>
 
                 <div id="partials_reviews">
-                    @include('clients.partials.reviews')
+                    @include('clients.partials.review')
                 </div>
 
                 <h3 class="{{ $checkDisplay }}">Thêm Đánh giá</h3>
                 <form id="comment-form" class="comment-form bgc-lighter z-1 rel mt-30 {{ $checkDisplay }}"
-                    name="review-form" action="{{ route('reviews') }}" method="post" data-aos="fade-up"
+                    name="review-form" action="#" method="post" data-aos="fade-up"
                     data-aos-duration="1500" data-aos-offset="50">
                     @csrf
                     <div class="comment-review-wrap">
@@ -172,8 +187,8 @@
                         <div class="col-md-12">
                             <div class="form-group mb-0">
                                 <button type="submit" class="theme-btn bgc-secondary style-two" id="submit-reviews"
-                                    data-url-checkBooking="{{ route('checkBooking') }}"
-                                    data-tourId-reviews="{{ $tourDetail->tourId }}">
+                                    data-url-checkBooking="#"
+                                    data-tourid-reviews="{{ $tourDetail->tourid }}">
                                     <span data-hover="Gửi đánh giá">Gửi đánh giá</span>
                                     <i class="fal fa-arrow-right"></i>
                                 </button>
@@ -189,7 +204,7 @@
                     <div class="widget widget-booking" data-aos="fade-up" data-aos-duration="1500"
                         data-aos-offset="50">
                         <h5 class="widget-title">Tour Booking</h5>
-                        <form action="{{ route('booking', ['id' => $tourDetail->tourId]) }}" method="POST">
+                        <form action="{{ route('booking', ['id' => $tourDetail->tourid]) }}" method="POST">
                             @csrf
                             <div class="date mb-25">
                                 <b>Ngày bắt đầu</b>
@@ -237,9 +252,8 @@
                         <h5 class="widget-title">Cần trợ giúp?</h5>
                         <ul class="list-style-one">
                             <li><i class="far fa-envelope"></i> <a
-                                    href="emilto:minhdien.dev@gmail.com">minhdien.dev@gmail.com</a></li>
-                            <li><i class="far fa-phone-volume"></i> <a href="callto:+000(123)45688">+000 (123) 456
-                                    88</a></li>
+                                    href="emilto:avocadoo1267@gmail.com">avocadoo1267@gmail.com</a></li>
+                            <li><i class="far fa-phone-volume"></i> <a href="callto:+0363227415">+0363227415</a></li>
                         </ul>
                     </div>
                     @if (!empty($tourRecommendations))
@@ -249,7 +263,7 @@
                             @foreach ($tourRecommendations as $tour)
                                 <div class="destination-item tour-grid style-three bgc-lighter">
                                     <div class="image">
-                                        {{-- <span class="badge">10% Off</span> 
+                                        {{-- <span class="badge">10% Off</span> --}}
                                         <img src="{{ asset('admin/assets/images/gallery-tours/' . $tour->images[0]) }}"
                                             alt="Tour" style="max-height: 137px">
                                     </div>
@@ -263,7 +277,7 @@
                                             </div>
                                         </div>
                                         <h6><a
-                                                href="{{ route('tour-detail', ['id' => $tour->tourId]) }}">{{ $tour->title }}</a>
+                                                href="{{ route('tour-detail', ['id' => $tour->tourid]) }}">{{ $tour->title }}</a>
                                         </h6>
                                     </div>
                                 </div>
@@ -278,6 +292,5 @@
 </section>
 <!-- Tour Details Area end -->
 
-@include('clients.blocks.new_letter')
-
-@include('clients.blocks.footer') --}}
+@include('clients.blocks.new-letter')
+@include('clients.blocks.footer')

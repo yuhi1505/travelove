@@ -14,7 +14,10 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('clients.blog');
+        // Set the title for the Blog page
+        $title = 'Blog';
+        // Return the view for the blog page
+        return view('clients.blog', compact('title'));
     }
 
     /**
@@ -81,13 +84,5 @@ class BlogController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function detail()
-    {
-        return view('clients.blog-detail');
-    }
-    public function list()
-    {
-        return view('clients.blog-list');
     }
 }

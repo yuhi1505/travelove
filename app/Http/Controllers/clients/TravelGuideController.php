@@ -14,7 +14,9 @@ class TravelGuideController extends Controller
      */
     public function index()
     {
-        return view('clients.travel-guide');
+        // Set the title for the Travel Guide page
+        $title = 'Hướng Dẫn Du Lịch';
+        return view('clients.travel-guide', compact('title'));
     }
 
     /**

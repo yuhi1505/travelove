@@ -39,7 +39,7 @@
                                 <li>Du lịch với chi phí thấp</li>
                                 <li>Hỗ trợ trực tuyến 24/7</li>
                             </ul>
-                            <a href="about.html" class="theme-btn style-three mt-30">
+                            <a href="{{ route('tour') }}" class="theme-btn style-three mt-30">
                                 <span data-hover="Khám phá các tour">Khám phá các tour</span>
                                 <i class="fal fa-arrow-right"></i>
                             </a>

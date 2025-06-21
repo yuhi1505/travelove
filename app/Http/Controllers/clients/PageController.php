@@ -14,7 +14,9 @@ class PageController extends Controller // Đổi từ PackageController thành 
      */
     public function index()
     {
-        return view('clients.page');
+        // Set the title for the Page
+        $title = 'Trang';
+        return view('clients.page', compact('title'));
     }
 
     /**
@@ -84,15 +86,18 @@ class PageController extends Controller // Đổi từ PackageController thành 
     }
     public function grid()
     {
-        return view('clients.gallery-grid');
+        $title = 'Gallery Grid';
+        return view('clients.gallery-grid', compact('title'));
     }
     public function slider()
     {
-        return view('clients.gallery-slider');
+        $title = 'Gallery Slider';
+        return view('clients.gallery-slider', compact('title'));
     }
     public function faqs()
     {
-        return view('clients.faqs');
+        $title = 'FAQs';
+        return view('clients.faqs', compact('title'));
     }
 
 }
