@@ -9,7 +9,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center mb-20 aos-init aos-animate" data-aos="fade-right"
                         data-aos-delay="200" data-aos-duration="1500" data-aos-offset="50">
-                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Trang chủ</a></li>
+                        <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
                         <li class="breadcrumb-item active">{{ $title }}</li>
                     </ol>
                 </nav>
@@ -42,7 +42,7 @@
                     <img src="{{ asset('clients/assets/images/gallery-tours/' . $tourDetail->images[3] . '') }}"
                         alt="Destination">
                 </div>
-                                <div class="gallery-item">
+                <div class="gallery-item">
                     <img src="{{ asset('clients/assets/images/gallery-tours/' . $tourDetail->images[4] . '') }}"
                         alt="Destination">
                 </div>
@@ -98,7 +98,7 @@
             <div class="col-lg-8">
                 <div class="tour-details-content">
                     <h3>Khám phá Tours</h3>
-                    <p>{{ $tourDetail->description }}</p>
+                    <p>{!! $tourDetail->description !!} </p>
                     <div class="row pb-55">
                         <div class="col-md-6">
                             <div class="tour-include-exclude mt-30">
@@ -146,7 +146,7 @@
                             <div id="collapseTwo{{ $timeline->timelineid }}" class="accordion-collapse collapse"
                                 data-bs-parent="#faq-accordion-two">
                                 <div class="accordion-body">
-                                    <p>{{ $timeline->description }}</p>
+                                    <p>{!! $timeline->description !!}</p>
                                 </div>
                             </div>
                         </div>
@@ -252,7 +252,7 @@
                         <h5 class="widget-title">Cần trợ giúp?</h5>
                         <ul class="list-style-one">
                             <li><i class="far fa-envelope"></i> <a
-                                    href="emilto:avocadoo1267@gmail.com">avocadoo1267@gmail.com</a></li>
+                                    href="emilto:minhdien.dev@gmail.com">avocadoo1267@gmail.com</a></li>
                             <li><i class="far fa-phone-volume"></i> <a href="callto:+0363227415">+0363227415</a></li>
                         </ul>
                     </div>
@@ -264,7 +264,7 @@
                                 <div class="destination-item tour-grid style-three bgc-lighter">
                                     <div class="image">
                                         {{-- <span class="badge">10% Off</span> --}}
-                                        <img src="{{ asset('admin/assets/images/gallery-tours/' . $tour->images[0]) }}"
+                                        <img src="{{ asset('clients/assets/images/gallery-tours/' . $tour->images[0]) }}"
                                             alt="Tour" style="max-height: 137px">
                                     </div>
                                     <div class="content">

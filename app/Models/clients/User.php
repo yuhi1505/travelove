@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models\clients;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,7 +12,7 @@ class User extends Model
     protected $table = 'tbl_user';
 
 
-    public function getUserid($username)
+    public function getUserId($username)
     {
         return DB::table($this->table)
             ->select('userid')
@@ -21,10 +20,10 @@ class User extends Model
     }
     public function getUser($id)
     {
-        $user = DB::table($this->table)
+        $users = DB::table($this->table)
             ->where('userid', $id)->first();
 
-        return $user;
+        return $users;
     }
 
     public function updateUser($id, $data)
@@ -36,30 +35,30 @@ class User extends Model
         return $update;
     }
 
-    public function getMyTours($id)
-    {
-        $myTours =  DB::table('tbl_booking')
-        ->join('tbl_tours', 'tbl_booking.tourid', '=', 'tbl_tours.tourid')
-        ->join('tbl_checkout', 'tbl_booking.bookingid', '=', 'tbl_checkout.bookingid')
-        ->where('tbl_booking.userid', $id)
-        ->orderByDesc('tbl_booking.bookingDate')
-        ->take(3)
-        ->get();
+    // public function getMyTours($id)
+    // {
+    //     $myTours =  DB::table('tbl_booking')
+    //     ->join('tbl_tours', 'tbl_booking.tourid', '=', 'tbl_tours.tourid')
+    //     ->join('tbl_checkout', 'tbl_booking.bookingId', '=', 'tbl_checkout.bookingId')
+    //     ->where('tbl_booking.userid', $id)
+    //     ->orderByDesc('tbl_booking.bookingDate')
+    //     ->take(3)
+    //     ->get();
 
-        foreach ($myTours as $tour) {
-            // Lấy rating từ tbl_reviews cho mỗi tour
-            $tour->rating = DB::table('tbl_reviews')
-                ->where('tourid', $tour->tourid)
-                ->where('userid', $id)
-                ->value('rating'); // Dùng value() để lấy giá trị rating
-        }
-        foreach ($myTours as $tour) {
-            // Lấy danh sách hình ảnh thuộc về tour
-            $tour->images = DB::table('tbl_images')
-                ->where('tourid', $tour->tourid)
-                ->pluck('imageURL');
-        }
+    //     foreach ($myTours as $tour) {
+    //         // Lấy rating từ tbl_reviews cho mỗi tour
+    //         $tour->rating = DB::table('tbl_reviews')
+    //             ->where('tourid', $tour->tourid)
+    //             ->where('userid', $id)
+    //             ->value('rating'); // Dùng value() để lấy giá trị rating
+    //     }
+    //     foreach ($myTours as $tour) {
+    //         // Lấy danh sách hình ảnh thuộc về tour
+    //         $tour->images = DB::table('tbl_images')
+    //             ->where('tourid', $tour->tourid)
+    //             ->pluck('imageURL');
+    //     }
 
-        return $myTours;
-    }
+    //     return $myTours;
+    // }
 }

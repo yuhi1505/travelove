@@ -14,6 +14,7 @@ use App\Http\Controllers\clients\TravelGuideController;
 use App\Http\Controllers\clients\LoginController;
 use App\Http\Controllers\clients\LoginGoogleController;
 use App\Http\Controllers\clients\SearchController;
+use App\Http\Controllers\clients\UserProfileController;
 
 
 /*
@@ -75,3 +76,15 @@ Route::get('/search', [SearchController::class, 'index'])->name('search');
 // filter tours, get tours
 Route::get('/tour', [TourController::class, 'index'])->name('tour');
 Route::get('/filter-tours', [TourController::class, 'filterTours'])->name('filter-tours');
+
+// user information
+Route::get('/user-profile', [UserProfileController::class, 'index'])->name('user-profile');
+Route::post('/user-profile', [UserProfileController::class, 'update'])->name('update-user-profile');
+Route::post('/change-password-profile', [UserProfileController::class, 'changePassword'])->name('change-password');
+Route::post('/change-avatar-profile', [UserProfileController::class, 'changeAvatar'])->name('change-avatar');
+
+
+//Hanlde checkout
+Route::post('/booking/{id?}', [BookingController::class, 'index'])->name('booking')->middleware('checkLoginClient');
+Route::post('/create-booking', [BookingController::class, 'createBooking'])->name('create-booking');
+// Route::get('/booking', [BookingController::class, 'handlePaymentMomoCallback'])->name('handlePaymentMomoCallback');

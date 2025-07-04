@@ -4,7 +4,7 @@
 <section class="container" style="margin-top:50px; margin-bottom: 100px">
     {{-- <h1 class="text-center booking-header">Tổng Quan Về Chuyến Đi</h1> --}}
 
-    <form action="#" method="post" class="booking-container">
+    <form action="{{ route('create-booking') }}" method="post" class="booking-container">
         @csrf
         <!-- Contact Information -->
         <div class="booking-info">
@@ -47,7 +47,7 @@
                     <div class="input__quanlity">
                         <button type="button" class="quantity-btn">-</button>
                         <input type="number" class="quantity-input" value="1" min="1" id="numAdults"
-                            name="numAdults" data-price-adults="#" readonly>
+                            name="numAdults" data-price-adults="{{ $tour->priceAdult }}" readonly>
                         <button type="button" class="quantity-btn">+</button>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                     <div class="input__quanlity">
                         <button type="button" class="quantity-btn">-</button>
                         <input type="number" class="quantity-input" value="0" min="0" id="numChildren"
-                            name="numChildren" data-price-children="#" readonly>
+                            name="numChildren" data-price-children="{{ $tour->priceChild }}" readonly>
                         <button type="button" class="quantity-btn">+</button>
                     </div>
                 </div>
@@ -92,6 +92,9 @@
                 <input type="radio" name="payment" value="momo-payment" required>
                 <img src="{{ asset('clients/assets/images/booking/thanh-toan-momo.jpg') }}" alt="MoMo">
                 Thanh toán bằng Momo
+                @if (!is_null($transIdMomo))
+                    <input type="hidden" name="transactionIdMomo" value="{{ $transIdMomo }}">
+                @endif
             </label>
 
             <input type="hidden" name="payment_hidden" id="payment_hidden">
@@ -101,12 +104,12 @@
         <div class="booking-summary">
             <div class="summary-section">
                 <div>
-                    <p>Mã tour : </p>
-                    <input type="hidden" name="tourId" id="tourId" value="#">
-                    <h5 class="widget-title"></h5>
-                    <p>Ngày khởi hành : </p>
-                    <p>Ngày kết thúc : </p>
-                    <p class="quantityAvailable">Số chỗ còn nhận : </p>
+                    <p>Mã tour : {{ $tour->tourid }}</p>
+                    <input type="hidden" name="tourid" id="tourid" value="{{ $tour->tourid }}">
+                    <h5 class="widget-title">{{ $tour->title }}</h5>
+                    <p>Ngày khởi hành : {{ date('d-m-Y', strtotime($tour->startDate)) }}</p>
+                    <p>Ngày kết thúc : {{ date('d-m-Y', strtotime($tour->endDate)) }}</p>
+                    <p class="quantityAvailable">Số chỗ còn nhận : {{ $tour->quantity }}</p>
                 </div>
 
                 <div class="order-summary">
